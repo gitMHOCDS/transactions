@@ -174,8 +174,7 @@
           "description": {
             "type": "string",
             "title": "Bill Description",
-            "description": "Brief description of the operation, referencing the documentations that support it.",
-            "format": "date-time"
+            "description": "Brief description of the operation, referencing the documentations that support it."
           },
           "date": {
             "description": "Indicates the date of issue of the document.",
