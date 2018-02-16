@@ -6,6 +6,6 @@
     "en": "Support for finantialObligation and paymentRequest, according to the payment process for Paraguay"
   },
   "documentationUrl": {
-    "en": "http://httpbin.org/anything/path/to/documentation/in/specified/language"
+    "en": "https://github.com/gitMHOCDS/transactions"
   }
 }
