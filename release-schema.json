@@ -86,7 +86,10 @@
             "description": "It indicates the number of payment request"
           },
           "description": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "title": "Description",
             "description": "It is a brief description in relation to the requested payment. It is loaded by the entities."
           },
