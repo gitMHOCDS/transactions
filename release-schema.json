@@ -258,7 +258,10 @@
           "description": {
             "title": "Description",
             "description": "Concept of the transfer",
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "requestDate": {
             "title": "Request Date",
