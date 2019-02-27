@@ -7,5 +7,14 @@
   },
   "documentationUrl": {
     "en": "https://github.com/gitMHOCDS/transactions"
-  }
+  },
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "retentionTypeCodelist.csv"
+  ],
+  "compatibility": [
+    "1.1"
+  ]
 }

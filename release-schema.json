@@ -1,287 +1,315 @@
 {
-    "definitions": {
-      "FinantialObligation": {
-        "title": "Finantial Obligation",
-        "description": "Finantial Obligation  ",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "title": "Obligation Id",
-            "description": "Number of the document that represents the obligation."
+  "definitions": {
+    "FinantialObligation": {
+      "title": "Finantial Obligation",
+      "description": "Finantial Obligation  ",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Obligation Id",
+          "description": "Number of the document that represents the obligation."
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Description",
+          "description": "Brief description of the operation, referencing the documentations that support it."
+        },
+        "bill": {
+          "title": "Bill",
+          "description": "The end date for the period. When known, a precise end date must always be provided.",
+          "$ref": "#/definitions/Bill"
+        },
+        "retentions": {
+          "title": "Retentions",
+          "description": "Retentions for the payment value.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Retention"
           },
-          "description": {
-            "type": "string",
-            "title": "Description",
-            "description": "Brief description of the operation, referencing the documentations that support it."
-          },
-          "bill": {
-            "title": "Bill",
-            "description": "The end date for the period. When known, a precise end date must always be provided.",
-            "$ref": "#/definitions/Bill"
-          },
-          "retentions": {
-            "title": "Retentions",
-            "description": "Retentions for the payment value.",
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/Retention"
-            },
-            "uniqueItems": true
-          },
-          "creationDate": {
-            "description": "It indicates the date of loading of the obligation",
-            "format": "date-time",
-            "title": "Creation Date",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "modificationDate": {
-            "description": "Indicates the date that is detected and corrected an error in the obligation.",
-            "format": "date-time",
-            "title": "Modification Date",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "cancellationDate": {
-            "description": "Indicates the date on which an obligation is left without effect for cause.",
-            "format": "date-time",
-            "title": "Modification Date",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "approvalDate": {
-            "description": "It indicates the date of verification and approval of the obligation by the hierarchical level.",
-            "format": "date-time",
-            "title": "Approval Date",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "paymentRequestIds": {
-            "title": "Payment Request Ids",
-            "description": "Indicates the number of the payment request",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "PaymentRequest": {
-        "title": "Payment Request",
-        "description": "Information about a Payment Request",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "title": "Payment Request Id",
-            "description": "It indicates the number of payment request"
-          },
-          "description": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "title": "Description",
-            "description": "It is a brief description in relation to the requested payment. It is loaded by the entities."
-          },
-          "status": {
-            "type": "string",
-            "title": "Status",
-            "description": "Indicates the status of the payment request"
-          },
-          "creationDate": {
-            "description": "It indicates the date of loading of the payment request",
-            "format": "date-time",
-            "title": "Creation Date",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "modificationDate": {
-            "description": "Indicates the date that is detected and corrected an error in the payment request.",
-            "format": "date-time",
-            "title": "Modification Date",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "treasuryReceptionDate": {
-            "description": "Indicates the date that the STR was received in the General direction of the Treasury",
-            "format": "date-time",
-            "title": "Treasury Reception Date",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "authorizationDate": {
-            "description": "Authorization Date of the payment request",
-            "format": "date-time",
-            "title": "Authorization Date",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "finantialObligationIds": {
-            "title": "Finantial Obligation Ids",
-            "description": "Listing numbers of obligations which are related to the payment request.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "requestedAmount": {
-            "title": "Requested Amount",
-            "description": "Amount of the payment request",
-            "$ref": "#/definitions/Value"
-          },
-          "totalRetentionAmount": {
-            "title": "Total Retention Amount",
-            "description": "Amounts of deductions (E.g.. Withholding of taxes, guarantee agreement, fines, etc.)",
-            "$ref": "#/definitions/Value"
-          },
-          "payedAmount": {
-            "title": "Payed Amount",
-            "description": "Transferred amount or liquid amount",
-            "$ref": "#/definitions/Value"
-          }
-        }
-      },
-      "Bill": {
-        "title": "Bill",
-        "description": "Bill",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "title": "Bill Id",
-            "description": "It corresponds to the numbering of the document."
-          },
-          "type": {
-            "title": "Bill Type",
-            "description": "It corresponds to the description of the document class.",
+          "uniqueItems": true
+        },
+        "creationDate": {
+          "description": "It indicates the date of loading of the obligation",
+          "format": "date-time",
+          "title": "Creation Date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modificationDate": {
+          "description": "Indicates the date that is detected and corrected an error in the obligation.",
+          "format": "date-time",
+          "title": "Modification Date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cancellationDate": {
+          "description": "Indicates the date on which an obligation is left without effect for cause.",
+          "format": "date-time",
+          "title": "Modification Date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "approvalDate": {
+          "description": "It indicates the date of verification and approval of the obligation by the hierarchical level.",
+          "format": "date-time",
+          "title": "Approval Date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "paymentRequestIds": {
+          "title": "Payment Request Ids",
+          "description": "Indicates the number of the payment request",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
             "type": "string"
-          },
-          "description": {
-            "type": "string",
-            "title": "Bill Description",
-            "description": "Brief description of the operation, referencing the documentations that support it."
-          },
-          "date": {
-            "description": "Indicates the date of issue of the document.",
-            "format": "date-time",
-            "title": "Bill Date",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "amount": {
-            "title": "Amount",
-            "description": "Indicates the amount of operation set forth in the document. (contains deductions)",
-            "$ref": "#/definitions/Value"
           }
         }
-      },
-      "Retention": {
-        "title": "Retention",
-        "description": "Retention",
-        "type": "object",
-        "properties": {
-          "type": {
-            "title": "Retention Type",
-            "description": "Type of the retention",
-            "type": "string",
-            "codelist": "retentionTypeCodelist.csv",
-            "openCodelist": true,
-            "enum": [
-              "tax",
-              "fee",
-              "penalty",
-              "other"
-            ],
-            "minItems": 1
-          },
-          "name": {
-            "type": "string",
-            "title": "Retention Name",
-            "description": "Retention Name",
-            "format": "string"
-          },
-          "amount": {
-            "title": "Amount of the Retention",
-            "description": "Deduction for value",
-            "$ref": "#/definitions/Value"
+      }
+    },
+    "PaymentRequest": {
+      "title": "Payment Request",
+      "description": "Information about a Payment Request",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Payment Request Id",
+          "description": "It indicates the number of payment request"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Description",
+          "description": "It is a brief description in relation to the requested payment. It is loaded by the entities."
+        },
+        "status": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Status",
+          "description": "Indicates the status of the payment request"
+        },
+        "creationDate": {
+          "description": "It indicates the date of loading of the payment request",
+          "format": "date-time",
+          "title": "Creation Date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modificationDate": {
+          "description": "Indicates the date that is detected and corrected an error in the payment request.",
+          "format": "date-time",
+          "title": "Modification Date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "treasuryReceptionDate": {
+          "description": "Indicates the date that the STR was received in the General direction of the Treasury",
+          "format": "date-time",
+          "title": "Treasury Reception Date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authorizationDate": {
+          "description": "Authorization Date of the payment request",
+          "format": "date-time",
+          "title": "Authorization Date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "finantialObligationIds": {
+          "title": "Finantial Obligation Ids",
+          "description": "Listing numbers of obligations which are related to the payment request.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
           }
+        },
+        "requestedAmount": {
+          "title": "Requested Amount",
+          "description": "Amount of the payment request",
+          "$ref": "#/definitions/Value"
+        },
+        "totalRetentionAmount": {
+          "title": "Total Retention Amount",
+          "description": "Amounts of deductions (E.g.. Withholding of taxes, guarantee agreement, fines, etc.)",
+          "$ref": "#/definitions/Value"
+        },
+        "payedAmount": {
+          "title": "Payed Amount",
+          "description": "Transferred amount or liquid amount",
+          "$ref": "#/definitions/Value"
         }
-      },
-      "Transaction": {
-        "properties": {
-          "finantialObligations": {
-            "title": "Finantial Obligations",
-            "description": "Information about the finantial obligations",
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/FinantialObligation"
-            },
-            "uniqueItems": true
+      }
+    },
+    "Bill": {
+      "title": "Bill",
+      "description": "Bill",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Bill Id",
+          "description": "It corresponds to the numbering of the document."
+        },
+        "type": {
+          "title": "Bill Type",
+          "description": "It corresponds to the description of the document class.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Bill Description",
+          "description": "Brief description of the operation, referencing the documentations that support it."
+        },
+        "date": {
+          "description": "Indicates the date of issue of the document.",
+          "format": "date-time",
+          "title": "Bill Date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "amount": {
+          "title": "Amount",
+          "description": "Indicates the amount of operation set forth in the document. (contains deductions)",
+          "$ref": "#/definitions/Value"
+        }
+      }
+    },
+    "Retention": {
+      "title": "Retention",
+      "description": "Retention",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Retention Type",
+          "description": "Type of the retention",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "retentionTypeCodelist.csv",
+          "openCodelist": false,
+          "enum": [
+            "tax",
+            "fee",
+            "penalty",
+            "other",
+            null
+          ],
+          "minItems": 1
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Retention Name",
+          "description": "Retention Name",
+          "format": "string"
+        },
+        "amount": {
+          "title": "Amount of the Retention",
+          "description": "Deduction for value",
+          "$ref": "#/definitions/Value"
+        }
+      }
+    },
+    "Transaction": {
+      "properties": {
+        "finantialObligations": {
+          "title": "Finantial Obligations",
+          "description": "Information about the finantial obligations",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FinantialObligation"
           },
-          "paymentRequests": {
-            "title": "Payment Request",
-            "description": "Information about the payment request",
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/PaymentRequest"
-            },
-            "uniqueItems": true
+          "uniqueItems": true
+        },
+        "paymentRequests": {
+          "title": "Payment Request",
+          "description": "Information about the payment request",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaymentRequest"
           },
-          "budgetSources": {
-            "title": "Budget Breakdowns Ids",
-            "description": "Budget Breakdowns Ids used in this payment",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-          },
-          "description": {
-            "title": "Description",
-            "description": "Concept of the transfer",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "requestDate": {
-            "title": "Request Date",
-            "description": "Indicates the date of the transfer order generation",
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time"
-          },
-          "uri": {
-            "title": "Uri",
-            "description": "Idenfitier of the transfer order.",
-            "type": [
-                "string",
-                "null"
-              ],
-            "format": "uri"
+          "uniqueItems": true
+        },
+        "budgetSources": {
+          "title": "Budget Breakdowns Ids",
+          "description": "Budget Breakdowns Ids used in this payment",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
           }
+        },
+        "description": {
+          "title": "Description",
+          "description": "Concept of the transfer",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "requestDate": {
+          "title": "Request Date",
+          "description": "Indicates the date of the transfer order generation",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
         }
       }
     }
   }
+}
